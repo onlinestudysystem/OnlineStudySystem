@@ -13,6 +13,8 @@ public class FootPrintItem {
     private String userId;
     //文章简介
     private String papperProfile;
+    //文章主题
+    private String title;
     //浏览时间
     private Date  readDate;
 
