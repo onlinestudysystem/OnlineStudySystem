@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineStudySystem.dao.UserInfoMapper">
+
+
+    <resultMap id="userInfoMap" type="UserInfo">
+        <id property="userId" column="userId"></id>
+        <result column="username" property="username"></result>
+        <result column="password" property="password"></result>
+        <result column="nikeName" property="nikeName"></result>
+        <result column="name" property="name"></result>
+        <result column="email" property="email"></result>
+        <result column="photo" property="photo"></result>
+        <result column="detail" property="detail"></result>
+        <result column="sex" property="sex"></result>
+        <result column="previledge" property="previledge"></result>
+    </resultMap>
+
+
+    <!--查询用户常用sql-->
+    <sql id="queryUserSql">
+        <if test="username!=null and username.trim()!=''.toString()">
+            username=#{username}
+        </if>
+        <if test="userId>0">
+            or userId = #{userId}
+        </if>
+    </sql>
+    <!--更新常用sql片段!-->
+    <sql id="updateSql">
+        <trim suffix="where" prefixOverrides=","
+              suffixOverrides=",">
+            <if test="password!=null and password.trim()!=''.toString()">
+                password=#{password},
+            </if>
+            <if test="name!=null and name.trim()!=''.toString()">
+                name=#{name},
+            </if>
+            <if test="nikeName!=null and nikeName.trim()!=''.toString()">
+                nikeName=#{nikeName},
+            </if>
+            <if test="detail!=null and detail.trim()!=''.toString() ">
+               detail=#{detail},
+            </if>
+            <if test="photo!=null and photo.trim()!=''.toString()">
+                photo=#{photo}
+            </if>
+        </trim>
+    </sql>
+
+
+    <!--    //注册-->
+<!--    public int registUserInfo(UserInfo userInfo);-->
+    <insert id="registUserInfo">
+        insert into tb_user values(#{userId},#{username},#{password},#{nikeName},#{name},#{email},#{photo},#{sex},#{detail},#{previledge});
+    </insert>
+<!--    //登录-->
+<!--    public UserInfo loginUser(@Param("username") String username, @Param("password") String password);-->
+    <select id="loginUser" resultMap="userInfoMap">
+        select * from tb_user where username=#{username} and password = #{password};
+    </select>
+<!--    //根据昵称模糊查询-->
+<!--    public  List<UserInfo> queryUserInfoInVague(UserInfo userInfo);-->
+    <select id="queryUserInfoInVague" resultMap="userInfoMap">
+        <bind name="_nikeName" value="'%'+nikeName+'%'"></bind>
+        select * from tb_user <where>
+        <if test="nikeName!=null and  nikeName.trim()!=''.toString()">
+            nikeName like  #{_nikeName}
+        </if>
+    </where>
+    </select>
+<!--    //查询全部用户-->
+<!--    public  List<UserInfo> queryAllUserInfo();-->
+    <select id="queryAllUserInfo" resultMap="userInfoMap">
+        select * from tb_user;
+    </select>
+
+<!--    //修改账号信息-->
+<!--    public int reviseUserInfo(UserInfo userInfo);-->
+    <update id="reviseUserInfo" >
+        update tb_user set
+        <include refid="updateSql"></include>id=#{id}
+    </update>
+<!--    //得到所有用户数量-->
+<!--    public int countUserNum();-->
+    <select id="countUserNum" resultType="int">
+         select count(userId) from tb_user;
+    </select>
+
+<!--    //根据用户id获取用户-->
+<!--    public UserInfo queryUserInfoById(int id);-->
+    <select id="queryUserInfoById" resultMap="userInfoMap">
+        select * from tb_user where userId=#{userId}
+    </select>
+
+<!--    //根据用户名检查用户是否已被注册-->
+<!--    public UserInfo checkUserExist(String username);-->
+    <select id="checkUserExist" resultType="int">
+        select count(*) from tb_user where username=#{username}
+    </select>
+
+</mapper>
