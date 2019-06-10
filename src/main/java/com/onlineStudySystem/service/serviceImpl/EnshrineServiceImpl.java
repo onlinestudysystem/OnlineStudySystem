@@ -1,6 +1,7 @@
 package com.onlineStudySystem.service.serviceImpl;
 
 import com.onlineStudySystem.bean.Enshrine;
+import com.onlineStudySystem.bean.Papper;
 import com.onlineStudySystem.dao.EnshrineMapper;
 import com.onlineStudySystem.service.EnshrineService;
 
@@ -34,6 +35,15 @@ public class EnshrineServiceImpl implements EnshrineService {
      * @return
      */
     public List<Enshrine> queryAllEnshrinePapper() {
+        return null;
+    }
+
+    /**
+     * 查找指定的文章，有没有被收藏过
+     * @param papperId
+     * @return
+     */
+    public Papper queryPapperById(String papperId) {
         return null;
     }
 }
