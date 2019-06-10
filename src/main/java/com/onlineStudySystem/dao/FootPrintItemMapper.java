@@ -10,7 +10,7 @@ import java.util.List;
 public interface FootPrintItemMapper {
 
         //添加足迹
-        public void addFootPrint(String papperId);
+        public void addFootPrint(FootPrintItem footPrintItem);
         //删除足迹
         public boolean deleteFootPrint(String papperId);
         //查询所有足迹

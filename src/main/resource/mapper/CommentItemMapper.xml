@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineStudySystem.dao.CommentItemMapper">
+<!--    //评论者id-->
+<!--    private String userId;-->
+<!--    //评论人的具体信息-->
+<!--    private UserInfo userInfo;-->
+<!--    //评论文章编号，就是papperId-->
+<!--    private String papperId;-->
+<!--    //评论内容-->
+<!--    @NotBlank(message = "评论信息不得为空！")-->
+<!--    private String commentText;-->
+<!--    //评论时间-->
+<!--    private Date commentDate;-->
+    <resultMap id="commentItemMap" type="CommentItem">
+        <result column="userId" property="userId"></result>
+        <result column="papperId" property="papperId"></result>
+        <result column="commentText" property="commentText"></result>
+        <result column="commentDate" property="commentDate"></result>
+        <association property="userInfo" select="com.onlineStudySystem.dao.UserInfoMapper.queryUserInfoById" column="userId"></association>
+    </resultMap>
+    <!--        //添加评论-->
+    <!--        public boolean addCommentItem(CommentItem commentItem);-->
+
+    <!--        //删除评论,根据文章编号和用户的id-->
+    <!--        public boolean deleteCommentItemById(CommentItem commentItem);-->
+
+
+    <!--        //查询指定文章的评论-->
+    <!--        public List<CommentItem> queryCommentInPapper(String papperId);-->
+     <select id="queryCommentInPapper" resultMap="commentItemMap">
+         select * from tb_comment where papperId =#{papperId} order by commentDate desc;
+     </select>
+</mapper>

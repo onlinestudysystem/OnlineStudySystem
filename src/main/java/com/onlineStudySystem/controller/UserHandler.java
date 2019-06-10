@@ -72,8 +72,9 @@ public class UserHandler {
          String msg=userInfoService.registUserInfo(userInfo);
          model.addAttribute("msg",msg);
          return "login";
-
      }
+
+
 
 
 }

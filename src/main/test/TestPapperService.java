@@ -55,6 +55,11 @@ public class TestPapperService {
         System.out.println(papperService.deletePapper("000001"));
     }
 
+    @Test
+    public void queryPapperInId(){
+        System.out.println(papperService.queryPapperById("000001"));
+    }
+
 
 
 

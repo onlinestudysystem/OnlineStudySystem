@@ -1,6 +1,7 @@
 package com.onlineStudySystem.controller;
 
 import com.onlineStudySystem.bean.Papper;
+import com.onlineStudySystem.bean.ValidationGroup.SearchPapperGroup;
 import com.onlineStudySystem.service.PapperService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
@@ -46,7 +47,7 @@ public class PapperHandler {
      */
     @RequestMapping(value = "/queryPapperByTitle" )
 
-    public String queryPapperByTitle(@Validated(SearchPapperGroup.class) Papper papper, BindingResult bindingResult,Model model){
+    public String queryPapperByTitle(@Validated(SearchPapperGroup.class) Papper papper, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             for(ObjectError error:bindingResult.getAllErrors()){
                 System.err.println(error.getObjectName()+":"+error.getDefaultMessage());
@@ -57,5 +58,13 @@ public class PapperHandler {
          model.addAttribute(papperService.queryPapperInVagueByTitle(papper.getTitle()));
          return "homePage";
     }
+
+    /**
+     *
+     */
+
+
+
+
 
 }

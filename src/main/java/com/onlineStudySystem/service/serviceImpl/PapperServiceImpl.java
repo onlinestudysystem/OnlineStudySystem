@@ -1,6 +1,8 @@
 package com.onlineStudySystem.service.serviceImpl;
 
 import com.onlineStudySystem.bean.Papper;
+import com.onlineStudySystem.dao.EnshrineMapper;
+import com.onlineStudySystem.dao.FootPrintItemMapper;
 import com.onlineStudySystem.dao.PapperMapper;
 import com.onlineStudySystem.service.PapperService;
 import com.onlineStudySystem.util.CheckUtil;
@@ -15,6 +17,11 @@ import java.util.UUID;
 public class PapperServiceImpl implements PapperService {
     @Resource
     PapperMapper papperMapper;
+    @Resource
+    EnshrineMapper enshrineMapper;
+    @Resource
+    FootPrintItemMapper footPrintItemMapper;
+
 
     //查询指定文章
     public Papper queryPapperById(String papperId) {
@@ -45,6 +52,9 @@ public class PapperServiceImpl implements PapperService {
     public String revisePapper(Papper papper) {
         //修改的时候记得更新足迹和收藏的
         if (papper.getPapperProfile().trim() != "" && papper.getPapperText() != "" && papper.getTitle() != "") {
+            //这里顺便更新足迹和收藏
+
+
            return papperMapper.revisePapper(papper)?"更新成功！":"更新失败，请检重试！";
         } else {
             return "请完善文章信息!";

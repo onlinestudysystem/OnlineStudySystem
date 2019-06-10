@@ -58,7 +58,7 @@
                 <div class="navbar-form navbar-right hidden-sm">
 
                     <form  action="/papper/queryPapperByTitle" method="get">
-                        <sf:errors path="*" cssClass="text-center" cssStyle="color: red;font-size: 20px" element="div"/>
+
                         <div class="input-group ">
                             <input type="text" name="input_title" class="form-control" placeholder="文章名称..." />
                             <span class="input-group-btn">
@@ -73,6 +73,7 @@
 </section>
 
 <section id="loginFormSection">
+    <sf:errors path="*" cssClass="text-center" cssStyle="color: red;font-size: 20px" element="div"/>
     <div id="loginhtml" class="container">
         <div class="row">
             <div class="col-md-7 col-sm-6 col-xs-5"></div>
@@ -82,6 +83,7 @@
                     <li class="col-md-6"><a  href="#regform" data-toggle="tab"  style="font-size: 24px;border: none" >注册账号</a></li>
                 </ul>
                 <div class="tab-content">
+
                     <div id="loginform" class="tab-pane fade in active">
                         <sf:form commandName="userInfo" action="/user/login"  method="post">
                             <div class="form-group">

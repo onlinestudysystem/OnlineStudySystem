@@ -1,5 +1,7 @@
 package com.onlineStudySystem.bean;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.Date;
 
 /**
@@ -14,9 +16,59 @@ public class CommentItem {
     //评论文章编号，就是papperId
     private String papperId;
     //评论内容
+    @NotBlank(message = "评论信息不得为空！")
     private String commentText;
     //评论时间
     private Date commentDate;
 
+    public String getUserId() {
+        return userId;
+    }
 
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public UserInfo getUserInfo() {
+        return userInfo;
+    }
+
+    public void setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
+    }
+
+    public String getPapperId() {
+        return papperId;
+    }
+
+    public void setPapperId(String papperId) {
+        this.papperId = papperId;
+    }
+
+    public String getCommentText() {
+        return commentText;
+    }
+
+    public void setCommentText(String commentText) {
+        this.commentText = commentText;
+    }
+
+    public Date getCommentDate() {
+        return commentDate;
+    }
+
+    public void setCommentDate(Date commentDate) {
+        this.commentDate = commentDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CommentItem{" +
+                "userId='" + userId + '\'' +
+                ", userInfo=" + userInfo +
+                ", papperId='" + papperId + '\'' +
+                ", commentText='" + commentText + '\'' +
+                ", commentDate=" + commentDate +
+                '}';
+    }
 }

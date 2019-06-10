@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.onlineStudySystem.dao.FootPrintItemMapper">
+    <resultMap id="footprintMap" type="FootPrintItem">
+        <result column="userId" property="userId"></result>
+        <result column="papperId" property="papperId"></result>
+        <result column="papperProfile" property="papperProfile"></result>
+        <result column="title" property="title"></result>
+        <result column="readDate" property="readDate"></result>
+    </resultMap>
+
+<!--    //添加足迹
+        public void addFootPrint(FootPrintItem footPrintItem);-->
+    <insert id="addFootPrint">
+        insert into tb_footprint values(#{papperId},#{userId},#{papperProfile},#{readDate},#{title});
+    </insert>
+<!--    //删除足迹-->
+<!--    public boolean deleteFootPrint(String papperId);-->
+
+<!--    //查询所有足迹-->
+<!--    public List<FootPrintItem> queryAllFootPrint();-->
+
+</mapper>
