@@ -38,7 +38,7 @@ input:focus{
 }
 #qh_navbar > ul >.active > a{
 	background: none;
-	font-size: 15px;
+	font-size: 20px;
 	font-weight: bolder;
 }
 #main_nav.input-group{
@@ -100,4 +100,7 @@ input:focus{
 }
 .footer>.cr>a{
 	color: #999 ;
+}
+a:focus {
+	outline:none;
 }

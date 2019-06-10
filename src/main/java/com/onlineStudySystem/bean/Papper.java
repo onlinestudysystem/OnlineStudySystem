@@ -1,5 +1,10 @@
 package com.onlineStudySystem.bean;
 
+import com.onlineStudySystem.bean.ValidationGroup.SearchPapperGroup;
+import com.onlineStudySystem.bean.ValidationGroup.SubmitPapperGroup;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 /**
@@ -10,16 +15,21 @@ public class Papper {
     //文章编号（唯一标志符）
     private String papperId;
     //文章主题
+    @NotBlank(message = "文章标题不得为空！",groups = {SubmitPapperGroup.class, SearchPapperGroup.class})
     private String title;
     //文章内容
+    @NotBlank(message = "文章内容不得为空！",groups = {SubmitPapperGroup.class})
     private String papperText;
     //文章简介
+    @Size(max=50,message = "文章简介必须保持在50字以内！",groups = {SubmitPapperGroup.class})
     private String papperProfile;
     //文章类型
+    @NotBlank(message = "请选择文章分类！",groups = {SubmitPapperGroup.class})
     private String type;
     //发布作者
     private UserInfo author;
     //发布人的id
+    @NotBlank(message = "发布人id不得为空！")
     private String authorId;
     //发布日期
     private Date submitDate;

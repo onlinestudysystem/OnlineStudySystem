@@ -1,14 +1,13 @@
-package com.onlineStudySystem.dao;
+package com.onlineStudySystem.service;
 
 import com.onlineStudySystem.bean.Papper;
-import com.onlineStudySystem.bean.UserInfo;
-import org.apache.ibatis.annotations.Param;
 
-import java.util.Date;
 import java.util.List;
 
-public interface PapperMapper {
-
+/**
+ * 关于文章的服务层操作类
+ */
+public interface PapperService {
     //根据文章id查询指定的文章
     public Papper queryPapperById(String papperId);
 
@@ -19,13 +18,13 @@ public interface PapperMapper {
     public List<Papper> queryAllPapper();
 
     //上传文章
-    public boolean submitPapper(Papper papper);
+    public String submitPapper(Papper papper);
 
     //修改指定的文章
-    public boolean revisePapper(Papper papper);
+    public String revisePapper(Papper papper);
 
     //删除文章
-    public boolean deletePapper(String papperId);
+    public String deletePapper(String papperId);
 
     //寻找今日文章
     public List<Papper> queryTodayPapper();
@@ -34,7 +33,7 @@ public interface PapperMapper {
     public List<Papper> queryRecommendPapper();
 
     //根据文章title 模糊查询文章
-    public List<Papper> queryPapperInVagueByTitle(@Param("title") String title);
+    public List<Papper> queryPapperInVagueByTitle(String title);
 
 
 }

@@ -1,5 +1,7 @@
 package com.onlineStudySystem.bean;
 
+import com.onlineStudySystem.bean.ValidationGroup.LoginValidationGroup;
+import com.onlineStudySystem.bean.ValidationGroup.RegistValidationGroup;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -15,23 +17,23 @@ public class UserInfo {
 
     private String userId;
     //用户名
-    @Size(min = 3,max = 40,message = "用户名长度请保持在{min}到{max}之间")
+    @Size(min = 3,max = 40,message = "用户名长度请保持在{min}到{max}之间",groups = {LoginValidationGroup.class, RegistValidationGroup.class})
     private String username;
     //账户密码
-    @NotBlank(message = "密码不得为空！")
+    @NotBlank(message = "密码不得为空！" ,groups = {LoginValidationGroup.class,RegistValidationGroup.class})
     private String password;
     //昵称
     private String nikeName;
     //姓名
-    @NotBlank(message = "请填写名字")
+    @NotBlank(message = "请填写名字",groups = {RegistValidationGroup.class})
     private String name;
     //邮箱
-    @Email(message = "邮箱格式不正确！")
+    @Email(message = "邮箱格式不正确！",groups = {RegistValidationGroup.class})
     private String email;
     //头像
     private String photo;
     //个人描述
-    @Size(max=50,message = "描述信息请控制在50字内！")
+    @Size(max=50,message = "描述信息请控制在50字内！",groups = {RegistValidationGroup.class})
     private String detail;
     //性别 0是男，1是女
     private int sex;
