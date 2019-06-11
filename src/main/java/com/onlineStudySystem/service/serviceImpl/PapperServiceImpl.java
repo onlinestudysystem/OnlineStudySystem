@@ -9,9 +9,7 @@ import com.onlineStudySystem.util.CheckUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class PapperServiceImpl implements PapperService {
@@ -33,8 +31,21 @@ public class PapperServiceImpl implements PapperService {
         return type.trim()!=""?papperMapper.qeuryPapperyByType(type):null;
     }
 
-    public List<Papper> queryAllPapper() {
-        return papperMapper.queryAllPapper();
+    public Map<String,List<Papper>> queryAllPapper() {
+        List<Papper> papperList=papperMapper.queryAllPapper();
+        Map<String,List<Papper>> papperMap=new HashMap<>();
+        for(Papper p:papperList){
+            if(papperMap.containsKey(p.getType())){
+                List<Papper> pappers=papperMap.get(p.getType());
+                pappers.add(p);
+                papperMap.put(p.getType(),pappers);
+            }else{
+                List<Papper> pappers=new ArrayList<>();
+                papperMap.put(p.getType(),pappers);
+            }
+        }
+
+        return papperMap;
     }
 
     public String submitPapper(Papper papper) {

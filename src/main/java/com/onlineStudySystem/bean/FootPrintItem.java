@@ -18,6 +18,14 @@ public class FootPrintItem {
     //浏览时间
     private Date  readDate;
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getPapperId() {
         return papperId;
     }
@@ -56,6 +64,7 @@ public class FootPrintItem {
                 "papperId='" + papperId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", papperProfile='" + papperProfile + '\'' +
+                ", title='" + title + '\'' +
                 ", readDate=" + readDate +
                 '}';
     }

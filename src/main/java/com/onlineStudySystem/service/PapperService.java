@@ -3,6 +3,7 @@ package com.onlineStudySystem.service;
 import com.onlineStudySystem.bean.Papper;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 关于文章的服务层操作类
@@ -15,7 +16,7 @@ public interface PapperService {
     public List<Papper> qeuryPapperyByType(String type);
 
     //查询所有的文章
-    public List<Papper> queryAllPapper();
+    public Map<String,List<Papper>> queryAllPapper();
 
     //上传文章
     public String submitPapper(Papper papper);

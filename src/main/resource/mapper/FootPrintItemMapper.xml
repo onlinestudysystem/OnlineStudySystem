@@ -18,8 +18,20 @@
     </insert>
 <!--    //删除足迹-->
 <!--    public boolean deleteFootPrint(String papperId);-->
-
+    <delete id="deleteFootPrint">
+        delete from tb_footprint where papperId=#{papperId} and userId=#{userId};
+    </delete>
 <!--    //查询所有足迹-->
-<!--    public List<FootPrintItem> queryAllFootPrint();-->
+<!--    public List<FootPrintItem> queryAllFootPrint(String userId);-->
+    <select id="queryAllFootPrint" resultMap="footprintMap">
+        select * from tb_footprint where userId=#{userId} order by readDate desc;
+    </select>
+
+<!--    //检测是否今天存在这篇文章-->
+<!--    public boolean checkIsTodayFootprint(FootPrintItem footPrintItem);-->
+    <select id="checkIsTodayFootprint" resultType="boolean">
+        select * from tb_footprint where userId = #{userId} and papperId=#{papperId} and  TO_DAYS(readDate)=TO_DAYS(NOW());
+    </select>
+
 
 </mapper>

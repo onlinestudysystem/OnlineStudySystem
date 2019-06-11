@@ -3,13 +3,14 @@ package com.onlineStudySystem.service;
 import com.onlineStudySystem.bean.FootPrintItem;
 
 import java.util.List;
+import java.util.Map;
 
 public interface FootPrintService {
 
     //添加足迹
     public void addFootPrint(FootPrintItem footPrintItem);
     //删除足迹
-    public String deleteFootPrint(String papperId);
+    public String deleteFootPrint(String papperId,String userId);
     //查询所有足迹
-    public List<FootPrintItem> queryAllFootPrint();
+    public Map<String,List<FootPrintItem>> queryAllFootPrint(String userId);
 }
