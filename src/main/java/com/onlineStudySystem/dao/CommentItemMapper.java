@@ -12,6 +12,8 @@ public interface CommentItemMapper {
     public boolean deleteCommentItemById(CommentItem commentItem);
     //查询指定文章的评论
     public List<CommentItem> queryCommentInPapper(String papperId);
+    //获取作者所有的评论
+    public List<CommentItem> queryCommentByUserId(String authorId);
 
 
 

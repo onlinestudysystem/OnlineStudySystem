@@ -24,7 +24,6 @@ public class Papper {
     @Size(max=50,message = "文章简介必须保持在50字以内！",groups = {SubmitPapperGroup.class})
     private String papperProfile;
     //文章类型
-    @NotBlank(message = "请选择文章分类！",groups = {SubmitPapperGroup.class})
     private String type;
     //发布作者
     private UserInfo author;

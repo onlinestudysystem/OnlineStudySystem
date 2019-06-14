@@ -16,7 +16,6 @@ public class CommentItemServiceImpl implements CommentItemService {
     CommentItemMapper commentItemMapper;
 
     /**
-     *
      * @param commentItem 评论项目
      * @return 返回字符串，成功则返回"评论成功"
      */
@@ -34,17 +33,23 @@ public class CommentItemServiceImpl implements CommentItemService {
      * @return 删除成功 ，或 删除失败信息
      */
     public String deleteCommentItemById(CommentItem commentItem) {
-        //自行完善逻辑
-        return "";
+        return  commentItemMapper.deleteCommentItemById(commentItem)?"删除成功！":"删除失败！请刷新重试";
     }
 
-
     /**
-     *
+     *查询这篇文章所有评论
      * @param papperId 文章编号
      * @return
      */
     public List<CommentItem> queryCommentInPapper(String papperId) {
-        return   commentItemMapper.queryCommentInPapper(papperId);
+        return  commentItemMapper.queryCommentInPapper(papperId);
     }
+
+
+    @Override
+    public List<CommentItem> queryCommentByUserId(String userId) {
+        return commentItemMapper.queryCommentByUserId(userId);
+    }
+
+
 }

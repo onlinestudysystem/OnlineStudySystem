@@ -18,8 +18,8 @@
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 
     <link href="../font/iconfont.css" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <link rel="stylesheet" type="text/css" href="../css/login.css">
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/css/login.css">
 
 
 </head>
@@ -35,7 +35,15 @@
     }
 </style>
 <body>
-<section id="header_section">
+<c:if test="${msg!=null}">
+    <script>
+        alert("注销成功!");
+    </script>
+</c:if>
+
+
+
+<section id="header_section" style="margin-bottom: 50px">
     <nav id="main_nav" class="navbar navbar-default navbar-static-top">
         <div class="container" style=" margin-left:70px">
             <div class="navbar-header">
@@ -44,21 +52,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="#" class="navbar-brand"><i class="iconfont icon-ship"></i>BSDN</a>
+                <a href="#" class="navbar-brand">BSDN</a>
             </div>
             <div id="qh_navbar" class="collapse navbar-collapse">
                 <ul class="nav navbar-nav">
                     <li class="active">
-                        <a href="/papper/homePage/queryAllPapper">首页</a>
+                        <a href="/papper/homePage">首页</a>
                     </li>
                     <li>
-                        <a href="/papper/homePage/todayPappers">今日发布</a>
+                        <a href="/papper/todayPapper">今日发布</a>
                     </li>
                 </ul>
                 <div class="navbar-form navbar-right hidden-sm">
-
-                    <form  action="/papper/queryPapperByTitle" method="get">
-
+                    <form  action="/papper/queryPapperByTitle">
                         <div class="input-group ">
                             <input type="text" name="input_title" class="form-control" placeholder="文章名称..." />
                             <span class="input-group-btn">
@@ -79,13 +85,17 @@
             <div class="col-md-7 col-sm-6 col-xs-5"></div>
             <div class="col-md-10 col-sm-12 col-xs-14 login-col">
                 <ul class="nav nav-tabs">
-                    <li class="col-md-6 active"><a  href="#loginform" data-toggle="tab" style="font-size: 24px;border:none">登录账号</a></li>
-                    <li class="col-md-6"><a  href="#regform" data-toggle="tab"  style="font-size: 24px;border: none" >注册账号</a></li>
+                    <li class="col-md-6 active"><a  href="#loginform" data-toggle="tab" style="font-size: 20px;">登录账号</a></li>
+                    <li class="col-md-6"><a  href="#regform" data-toggle="tab"  style="font-size: 20px;" >注册账号</a></li>
                 </ul>
-                <div class="tab-content">
-
+                <div class="tab-content" style="margin-top: 50px">
                     <div id="loginform" class="tab-pane fade in active">
+                        <c:if test="${login_msg!=null}">
+                            <span style="color:red;font-size: 18px">${login_msg}</span>
+                        </c:if>
+
                         <sf:form commandName="userInfo" action="/user/login"  method="post">
+
                             <div class="form-group">
                                 <label >账号:</label>
                                 <sf:input type="text" name="username" class="form-control" style="font-size: 18px;padding: 10px;height: 45px" placeholder="邮箱/手机/用户名" path="username"/>
@@ -112,7 +122,7 @@
                         </div>
                     </div>
                     <div id="regform" class="tab-pane fade">
-                        <sf:form action="/user" commandName="userInfo" method="post">
+                        <sf:form action="/user/regist" commandName="userInfo" method="post">
 
                             <div class="form-group">
                                 <label>用户名:</label>

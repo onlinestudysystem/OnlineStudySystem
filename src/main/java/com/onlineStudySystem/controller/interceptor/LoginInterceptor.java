@@ -23,7 +23,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
         //返回登录界面
         request.getRequestDispatcher("/user/login").forward(request,response);
         return false;
-
     }
 
     @Override

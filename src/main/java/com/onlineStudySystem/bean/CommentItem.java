@@ -20,6 +20,8 @@ public class CommentItem {
     private String commentText;
     //评论时间
     private Date commentDate;
+    //作者的id
+    private String authorId;
 
     public String getUserId() {
         return userId;
@@ -61,6 +63,14 @@ public class CommentItem {
         this.commentDate = commentDate;
     }
 
+    public String getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(String authorId) {
+        this.authorId = authorId;
+    }
+
     @Override
     public String toString() {
         return "CommentItem{" +
@@ -69,6 +79,7 @@ public class CommentItem {
                 ", papperId='" + papperId + '\'' +
                 ", commentText='" + commentText + '\'' +
                 ", commentDate=" + commentDate +
+                ", authorId='" + authorId + '\'' +
                 '}';
     }
 }

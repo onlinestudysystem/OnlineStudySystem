@@ -17,7 +17,7 @@ public interface FootPrintItemMapper {
         //查询所有足迹
         public List<FootPrintItem> queryAllFootPrint(String userId);
         //检测是否今天存在这篇文章
-        public boolean checkIsTodayFootprint(FootPrintItem footPrintItem);
+        public Integer checkIsTodayFootprint(FootPrintItem footPrintItem);
 
         
 

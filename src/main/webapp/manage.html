@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<style>
+    #secondSection{
+
+        margin-left: 80px;
+        margin-right: 100px;
+        margin-top: 40px;
+
+    }
+</style>
+<script type="text/javascript">
+    function  submit() {
+        $("#subForm").ajaxSubmit({
+            type: "POST",
+            url: "/",
+            data:{
+                merchantId:${sessionScope.userInfo.id}
+            },
+            dataType: "json",
+            success:function (data) {
+            }
+        });
+    }
+</script>
+<body>
+
+<section id="header_section">
+    <nav  class="navbar navbar-default navbar-static-top">
+        <div class="container" style=" margin-left:70px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#qh_navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand"><i class="iconfont icon-ship"></i>BSDN</a>
+            </div>
+            <div id="qh_navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/papper/homePage">首页</a>
+                    </li>
+                    <li>
+                        <a href="/papper/todayPapper">今日发布</a>
+                    </li>
+                    <li>
+                        <a href="/footPrint/queryAllFootPrint">我的足迹</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">收藏夹</a></li>
+                            <li><a href="#">写文章</a></li>
+                            <li><a href="#">管理已发布文章</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-form navbar-right hidden-sm">
+                    <form  action="/papper/queryPapperByTitle" method="get">
+                        <div class="input-group ">
+                            <input type="text" name="input_title" class="form-control" placeholder="输入文章名称..." />
+                            <span class="input-group-btn">
+                 					 <button type="submit"  class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section id="secondSection">
+
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#write"  style="padding-right: 35px; padding-left: 35px;" class="tabclsA"  aria-controls="write" role="tab" data-toggle="tab">写文章</a></li>
+        <li role="presentation"><a href="#manage" style="padding-right: 35px; padding-left: 35px;"  class="tabclsA" aria-controls="manage" role="tab" data-toggle="tab">管理文章</a></li>
+        <li role="presentation"><a href="#message" style="padding-right: 35px; padding-left: 35px;"  class="tabclsA" aria-controls="message" role="tab" data-toggle="tab">评论消息<span class="badge" style="margin-left: 10px">0</span></a></li>
+    </ul>
+    <div class="tab-content" style="margin-top: 30px">
+        <div role="tabpanel" class="tab-pane active" id="write">
+                <form>
+                    <div class="form-group">
+                        <label for="title">文章标题:</label>
+                        <input type="text" class="form-control" name="title" id="title" placeholder="文章标题，小于50字">
+                    </div>
+                    <div class="form-group">
+                        <label for="papperProfile">文章简介:</label>
+                        <textarea class="form-control" id="papperProfile" name="papperProfile" rows="3" placeholder="文章简介小于100字"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="papperText">文章内容</label>
+                        <textarea class="form-control" id="papperText" name="papperText" rows="30"></textarea>
+                    </div>
+
+                    <div class="row text-center" >
+                            <button type="reset" style="width: 150px;"  class="btn  btn-default btn-lg">清空</button>
+                            <button type="button" onclick="submit()" style="width: 150px;" class="btn btn-warning btn-danger btn-lg text-center">提交</button>
+                    </div>
+            </form>
+        </div>
+
+<!--        管理已发布文章界面-->
+        <div role="tabpanel" class="tab-pane active" id="manage">
+            <div class="row">
+                <a href="/papper/queryPapperById/${item.papperId}" style="color:#000000">
+                    <div class="col-md-5" style="border: 1px solid #e7e7e7;margin-left: 20px;margin-top: 10px">
+                        <p style="font-weight: bold;font-size: 21px;padding-top:10px">${item.title}</p>
+                        <div style="line-height:30px;overflow: hidden;font-size: 15px;height:88px;text-overflow:ellipsis;" class="text-muted">
+                            <span style="font-size: 20px;font-weight: bold; ">简介:</span>
+                            ${item.papperProfile}
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <span class="text-muted" style="font-size: 15px;margin-left: 17px">发布日期:<fmt:formatDate pattern="yyyy年MM月dd日" value="${item.submitDate}"></fmt:formatDate></span>
+                            <div class="pull-right">
+                                <img style="width: 30px;height:  30px;margin-top: 2px;" src="/static/images/commonPic/heart.png"><span class="text-muted" style="padding-top: 10px;margin-right: 10px;font-size: 18px ;">${item.enshrineNumber}人</span>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top: 10px">
+                            <a href="/papper/deletePapper/" style="width: 150px;" class="btn  btn-default btn-lg">删除文章</a>
+                            <a style="width: 150px;" class="btn btn-warning btn-danger btn-lg text-center">编辑文章</a>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="message">
+            <div class="container">
+              <div class="row" style="margin-top: 20px">
+                  <div class="media">
+                      <div class="media-left">
+                          <a href="#">
+                              <img class="media-object" style="width: 45px;height: 45px;" src="static/images/userLogo/man.png" alt="用户头像">
+                          </a>
+                      </div>
+                      <div class="media-body">
+                          <h4 class="media-heading">用户名</h4>
+                          <p class="text-muted">评论日期:2019-10-10</p>
+                      </div>
+                  </div>
+                  <div class="col-md-12" style="border: 1px solid lightseagreen;text-indent: 2em;font-size: 18px;padding: 10px">
+                      评论内容
+                  </div>
+
+              </div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -41,6 +41,7 @@ public class PapperServiceImpl implements PapperService {
                 papperMap.put(p.getType(),pappers);
             }else{
                 List<Papper> pappers=new ArrayList<>();
+                pappers.add(p);
                 papperMap.put(p.getType(),pappers);
             }
         }
@@ -60,12 +61,10 @@ public class PapperServiceImpl implements PapperService {
         return papperMapper.submitPapper(papper)?"提交成功！":"上传文章失败！请检查网络连接!";
     }
 
+    //修改
     public String revisePapper(Papper papper) {
         //修改的时候记得更新足迹和收藏的
         if (papper.getPapperProfile().trim() != "" && papper.getPapperText() != "" && papper.getTitle() != "") {
-            //这里顺便更新足迹和收藏
-
-
            return papperMapper.revisePapper(papper)?"更新成功！":"更新失败，请检重试！";
         } else {
             return "请完善文章信息!";
@@ -82,6 +81,11 @@ public class PapperServiceImpl implements PapperService {
         return null;
     }
 
+    @Override
+    public List<Papper> queryTodayPapperByType(String type) {
+        return papperMapper.queryTodayPapperByType(type);
+    }
+
     //推荐
     public List<Papper> queryRecommendPapper() {
         List<Papper> pappers=papperMapper.queryRecommendPapper();
@@ -94,6 +98,11 @@ public class PapperServiceImpl implements PapperService {
             return null;
         }
         return papperMapper.queryPapperInVagueByTitle(title);
+    }
+
+    @Override
+    public List<Papper> queryAuthorPapper(String authorId) {
+        return papperMapper.queryAuthorPapper(authorId);
     }
 
 

@@ -22,15 +22,13 @@ public class TestUserInfoService {
     public  void registUserInfo(){
         UserInfo userInfo=new UserInfo();
         userInfo.setPassword("1234567");
-        userInfo.setUsername("132726273575");
+        userInfo.setUsername("13272611231235");
         userInfo.setNikeName("qqqqqqqqqqq");
         userInfo.setName("asdasd");
         userInfo.setPreviledge(0);
-        userInfo.setSex(0);
+        userInfo.setSex("男");
         userInfo.setDetail("asdasd");
         userInfo.setEmail("123123@qq,con");
-
-
         System.out.println(userInfoServiceImpl.registUserInfo(userInfo));
 
     }

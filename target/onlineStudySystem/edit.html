@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑文章</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<style>
+    #second_section{
+        margin-top: 30px;
+        margin-left: 80px;
+        margin-right: 100px;
+    }
+</style>
+<body>
+<section id="header_section">
+    <nav  class="navbar navbar-default navbar-static-top">
+        <div class="container" style=" margin-left:70px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#qh_navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand"><i class="iconfont icon-ship"></i>BSDN</a>
+            </div>
+            <div id="qh_navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/papper/homePage/queryAllPapper">首页</a>
+                    </li>
+                    <li>
+                        <a href="/papper/homePage/todayPappers">今日发布</a>
+                    </li>
+                    <li>
+                        <a href="/footPrint/queryAllFootPrint">我的足迹</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">收藏夹</a></li>
+                            <li><a href="#">写文章</a></li>
+                            <li><a href="#">管理已发布文章</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" style="margin-left: 50px" >
+                    <li><a href="/user/logout" style="font-size: 15px;"><span class="glyphicon glyphicon-off" style="margin-right: 10px"></span>注销</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="height:45px" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="static/images/userLogo/man.png" style="width: 45px;height: 45px;margin-top: -13px" class="img-circle"/></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/personalInfo">个人信息</a></li>
+                            <li><a href="#">账号安全</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-form navbar-right hidden-sm">
+                    <form  action="/papper/queryPapperByTitle" method="get">
+                        <div class="input-group ">
+                            <input type="text" name="input_title" class="form-control" placeholder="输入文章名称..." />
+                            <span class="input-group-btn">
+                 					 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+
+</div>
+<section id="second_section">
+    <div class="container-fluid">
+        <div class="page-header">
+            <h1>编辑文章</h1>
+        </div>
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <label for="title">文章标题:</label>
+                    <input type="text" class="form-control" name="title" id="title" placeholder="文章标题，小于50字">
+                </div>
+                <div class="form-group">
+                    <label for="papperProfile">文章简介:</label>
+                    <textarea class="form-control" id="papperProfile" name="papperProfile" rows="3" placeholder="文章简介小于100字">123123</textarea>
+                </div>
+                <div class="form-group">
+                    <label for="papperText">文章内容</label>
+                    <textarea class="form-control" id="papperText" name="papperText" rows="30"></textarea>
+                </div>
+
+                <div class="row text-center" >
+                    <button type="reset" style="width: 150px;"  class="btn  btn-default btn-lg">清空</button>
+                    <button type="button" onclick="submit()" style="width: 150px;" class="btn btn-warning btn-danger btn-lg text-center">提交</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

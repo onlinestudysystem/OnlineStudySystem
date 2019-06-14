@@ -13,4 +13,6 @@ public interface CommentItemService {
     public String deleteCommentItemById(CommentItem commentItem);
     //查询指定文章的评论
     public List<CommentItem> queryCommentInPapper(String papperId);
+    //获取该作者的所有评论
+    public List<CommentItem> queryCommentByUserId(String userId);
 }

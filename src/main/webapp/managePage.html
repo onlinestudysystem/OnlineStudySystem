@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+</head>
+<style>
+    #secondSection{
+        margin-top: 60px;
+        margin-left: 80px;
+
+        margin-right: 100px;
+        margin-bottom: 90px;
+    }
+    body{
+        background: #f5f6f7;
+    }
+    #papperBody{
+        font-size: 20px;
+        color:#000000;
+        padding-left: 2em;
+        padding-right: 2em;
+        text-indent: 2em;
+
+    }
+</style>
+
+<body>
+<section id="header_section">
+    <nav  class="navbar navbar-default navbar-static-top">
+        <div class="container" style=" margin-left:70px">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#qh_navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand"><i class="iconfont icon-ship"></i>BSDN</a>
+            </div>
+            <div id="qh_navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="/papper/homePage/queryAllPapper">首页</a>
+                    </li>
+                    <li>
+                        <a href="/papper/homePage/todayPappers">今日发布</a>
+                    </li>
+                    <li>
+                        <a href="/footPrint/queryAllFootPrint">我的足迹</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章管理<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">收藏夹</a></li>
+                            <li><a href="#">写文章</a></li>
+                            <li><a href="#">管理已发布文章</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" style="margin-left: 50px" >
+                    <li><a href="/user/logout" style="font-size: 15px;"><span class="glyphicon glyphicon-off" style="margin-right: 10px"></span>注销</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" style="height:45px" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><img src="static/images/userLogo/man.png" style="width: 45px;height: 45px;margin-top: -13px" class="img-circle"/></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/user/personalInfo">个人信息</a></li>
+                            <li><a href="#">账号安全</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="navbar-form navbar-right hidden-sm">
+                    <form  action="/papper/queryPapperByTitle" method="get">
+                        <div class="input-group ">
+                            <input type="text" name="input_title" class="form-control" placeholder="输入文章名称..." />
+                            <span class="input-group-btn">
+                 					 <button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+</section>
+
+<section id="secondSection" >
+ <div class="container-fluid">
+     <div class="row">
+         <div class="col-md-3" style="border:1px solid #e5e5e5">
+            <div class="row" style="height:150px;background:white;overflow: hidden">
+                  <img src="static/images/userLogo/man.png" style="width:80px;height: 80px;margin-top: 15px;margin-left: 150px" alt="用户头像">
+                  <p style="font-size: 22px;font-weight: bold;margin-left: 14px;margin-top:20px;" class="text-center">作者昵称:hasdadahang</p>
+            </div>
+             <div class="row" style="height:150px;background:white;border-top: 1px solid #e5e5e5;padding:20px;padding-left: 80px" onclick="text-center">
+                 <button type="button" class="btn btn-danger btn-md">关注作者</button>
+                 <a class="btn btn-success btn-md" style="margin-left: 20px">收藏文章</a>
+             </div>
+         </div>
+         <div class="col-md-8" style="border:1px solid #e7e7e7;background: white;height: 900px;overflow-y: auto">
+              <p style="font-weight: bold;font-size: 28px;margin-left: 20px;margin-top: 20px">文章标题</p>
+              <p style="font-size: 19px;margin-left: 20px;margin-top: 8px" class="text-muted">2019年02月02日
+                  <span style="margin-left: 100px;font-size: 19px;color:lightskyblue">文章作者:2368521029@qq.com</span>
+                  <span style="margin-left:30px;font-size: 19px;" class="text-muted">收藏数:223</span>
+              </p>
+
+             <p style="border:1px solid #e7e7e7;margin-top:20px;margin-bottom: 30px"></p>
+
+             <div id="papperBody">
+                 按照上面博主的步骤下载激活软件并生成激活码之后，再navicat上点击帮助--》注册，然后输入激活码可能会出现该问题，我们只需要把网络断开！！！！，然后重新打开navicat，再点击帮助--》注册，然后输入激活码，
+                 会出现手动注册，然后将上面的请求码复制到命令行（cmd）中，会得到反馈过来的激活码，再次将激活码粘贴进去。激活成功！
+             </div>
+         </div>
+     </div>
+ </div>
+</section>
+
+
+<section id="commentSection" style="margin-right: 100px;margin-left: 80px; margin-bottom: 90px;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-3" style="border:1px solid #e7e7e7;background: white;height: 900px;overflow-y: auto">
+                <p style="font-weight: bold;font-size: 28px;margin-left: 20px;margin-top: 20px">用户评论<span class="badge">0</span></p>
+                <p style="border:1px solid #e7e7e7;margin-top:20px;margin-bottom: 30px"></p>
+
+                <div class="row" style="margin-top: 20px;margin-left: 10px;margin-right: 10px">
+                    <div class="media">
+                        <div class="media-left">
+                            <a href="#">
+                                <img class="media-object" style="width: 45px;height: 45px;" src="static/images/userLogo/man.png" alt="用户头像">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">用户名</h4>
+                            <p class="text-muted">评论日期:2019-10-10</p>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="border: 1px solid lightseagreen;text-indent: 2em;font-size: 18px;padding: 10px">
+                        评论内容
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--<p style="font-size:25px;font-weight: bold;">用户评论<span class="badge">0</span></p>-->
+<!--<p style="border: 1px solid #e7e7e7;margin-top:10px"></p>-->
+
+
+</body>
+</html>

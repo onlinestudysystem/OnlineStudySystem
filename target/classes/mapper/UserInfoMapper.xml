@@ -54,7 +54,7 @@
     <!--    //注册-->
 <!--    public int registUserInfo(UserInfo userInfo);-->
     <insert id="registUserInfo">
-        insert into tb_user values(#{userId},#{username},#{password},#{nikeName},#{name},#{email},#{photo},#{sex},#{detail},#{previledge});
+        insert into tb_user(userId,username,password,email,sex) values(#{userId},#{username},#{password},#{email},#{sex},#{previledge});
     </insert>
 <!--    //登录-->
 <!--    public UserInfo loginUser(@Param("username") String username, @Param("password") String password);-->
@@ -81,7 +81,7 @@
 <!--    public int reviseUserInfo(UserInfo userInfo);-->
     <update id="reviseUserInfo" >
         update tb_user set
-        <include refid="updateSql"></include>id=#{id}
+        <include refid="updateSql"></include> userId=#{userId}
     </update>
 <!--    //得到所有用户数量-->
 <!--    public int countUserNum();-->

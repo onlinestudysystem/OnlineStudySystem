@@ -30,11 +30,17 @@ public interface PapperMapper {
     //寻找今日文章
     public List<Papper> queryTodayPapper();
 
+    //按类型寻找今日文章
+    public List<Papper> queryTodayPapperByType(@Param("type") String type);
+
     //按收藏量寻找推荐文章
     public List<Papper> queryRecommendPapper();
 
     //根据文章title 模糊查询文章
     public List<Papper> queryPapperInVagueByTitle(@Param("title") String title);
+
+    //查询作者所有文章
+    public List<Papper> queryAuthorPapper(String authorId);
 
 
 }

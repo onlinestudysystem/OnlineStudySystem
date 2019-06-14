@@ -2,8 +2,10 @@ package com.onlineStudySystem.bean;
 
 import com.onlineStudySystem.bean.ValidationGroup.LoginValidationGroup;
 import com.onlineStudySystem.bean.ValidationGroup.RegistValidationGroup;
+import com.onlineStudySystem.bean.ValidationGroup.UpdateValidationGroup;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.validation.annotation.Validated;
 
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,20 +25,21 @@ public class UserInfo {
     @NotBlank(message = "密码不得为空！" ,groups = {LoginValidationGroup.class,RegistValidationGroup.class})
     private String password;
     //昵称
+    @NotBlank(message = "昵称不得为空!",groups = {UpdateValidationGroup.class})
     private String nikeName;
     //姓名
     @NotBlank(message = "请填写名字",groups = {RegistValidationGroup.class})
     private String name;
     //邮箱
-    @Email(message = "邮箱格式不正确！",groups = {RegistValidationGroup.class})
+    @Email(message = "邮箱格式不正确！",groups = {RegistValidationGroup.class,UpdateValidationGroup.class})
     private String email;
     //头像
     private String photo;
     //个人描述
-    @Size(max=50,message = "描述信息请控制在50字内！",groups = {RegistValidationGroup.class})
+    @Size(max=50,message = "描述信息请控制在50字内！",groups = {RegistValidationGroup.class,UpdateValidationGroup.class})
     private String detail;
     //性别 0是男，1是女
-    private int sex;
+    private String sex;
     //用户的权限 0代表普通用户，1是会员，2是管理员
     private int  previledge;
 
@@ -105,11 +108,11 @@ public class UserInfo {
         this.userId = userId;
     }
 
-    public int getSex() {
+    public String getSex() {
         return sex;
     }
 
-    public void setSex(int sex) {
+    public void setSex(String sex) {
         this.sex = sex;
     }
 

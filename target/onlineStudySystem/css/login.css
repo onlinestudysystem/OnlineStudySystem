@@ -1,0 +1,53 @@
+body{
+	background: #F9F9F9;
+}
+#loginhtml{
+	margin-top:100px ;
+}
+.login-col{
+	padding:0px 0 30px 0;
+	border: 1px #ccc solid;
+	background: #fff;
+}
+.login-col>ul{
+	border:none;
+}
+.login-col>ul>li{
+	padding: 0px;
+}
+.login-col>ul>li>a{
+	border:0px;
+	padding: 20px 0 20px 0;
+	border-radius: 0;
+	text-align: center;
+	background: #EEEEEE;
+	font-size: 20px;
+	margin: 0;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{
+	border: none;
+	
+}
+#loginform,#regform{
+	padding: 20px 50px 0 50px;
+}
+#loginform>form>div.checkbox,
+#regform>form>div.checkbox{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+#loginform>form>div>input.btn,
+#regform>form>div>input.btn{
+	height: 40px;
+	margin:0 auto ;
+	font-size: 20px;
+}
+.form-group>p>a{
+text-decoration: none;
+}
+.form-group>p>a>span{
+ font-size: 30px;
+}
+a:focus {
+	outline:none;
+}

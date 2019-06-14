@@ -13,7 +13,7 @@
         http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd">
 
 
-    <context:component-scan base-package="com.onlineStudySystem.controller"></context:component-scan>
+    <context:component-scan base-package="com.onlineStudySystem.controller,com.onlineStudySystem.controller.exceptionResolver"></context:component-scan>
     <import resource="spring-aop.xml"></import>
     <mvc:annotation-driven conversion-service="conversionService"/>
     <mvc:default-servlet-handler/>
@@ -32,12 +32,16 @@
         <property name="suffix" value=".jsp"></property>
     </bean>
 
-    <mvc:resources mapping="images/**" location="/static/images/"></mvc:resources>
+    <mvc:resources mapping="/static/images/**" location="/static/images/"/>
 
 <!--    拦截器，如果有mapping开头的就拦截请求-->
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/user/**"/>
+            <mvc:mapping path="/comment/**"/>
+            <mvc:mapping path="/enshrine/**"/>
+            <mvc:mapping path="/footPrint/**"/>
+            <mvc:mapping path="/papper/queryManagePapperForm/**"/>
             <bean class="com.onlineStudySystem.controller.interceptor.LoginInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
@@ -48,6 +52,4 @@
         <property name="defaultEncoding" value="UTF-8"></property>
         <property name="uploadTempDir" value="static/images/upload/"></property>
     </bean>
-
-
 </beans>

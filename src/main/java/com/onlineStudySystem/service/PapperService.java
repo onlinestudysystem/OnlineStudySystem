@@ -2,6 +2,7 @@ package com.onlineStudySystem.service;
 
 import com.onlineStudySystem.bean.Papper;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -30,11 +31,17 @@ public interface PapperService {
     //寻找今日文章
     public List<Papper> queryTodayPapper();
 
+    //按类型寻找今日文章
+    public List<Papper> queryTodayPapperByType(String type);
+
     //按收藏量寻找推荐文章
     public List<Papper> queryRecommendPapper();
 
     //根据文章title 模糊查询文章
     public List<Papper> queryPapperInVagueByTitle(String title);
+
+    //查询作者所有文章
+    public List<Papper> queryAuthorPapper(String authorId);
 
 
 }

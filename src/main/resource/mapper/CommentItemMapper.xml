@@ -19,18 +19,30 @@
         <result column="papperId" property="papperId"></result>
         <result column="commentText" property="commentText"></result>
         <result column="commentDate" property="commentDate"></result>
+        <result column="authorId" property="authorId"></result>
         <association property="userInfo" select="com.onlineStudySystem.dao.UserInfoMapper.queryUserInfoById" column="userId"></association>
     </resultMap>
     <!--        //添加评论-->
     <!--        public boolean addCommentItem(CommentItem commentItem);-->
+    <insert id="addCommentItem">
+        insert into tb_comment values(#{papperId},#{userId},#{commentText},#{commentDate},#{authorId});
+    </insert>
 
     <!--        //删除评论,根据文章编号和用户的id-->
     <!--        public boolean deleteCommentItemById(CommentItem commentItem);-->
-
+    <insert id="deleteCommentItemById">
+        delete from tb_comment where papperId=#{papperId} and userId=#{userId};
+    </insert>
 
     <!--        //查询指定文章的评论-->
     <!--        public List<CommentItem> queryCommentInPapper(String papperId);-->
      <select id="queryCommentInPapper" resultMap="commentItemMap">
          select * from tb_comment where papperId =#{papperId} order by commentDate desc;
+     </select>
+
+<!--    //获取作者所有的评论-->
+<!--    public List<CommentItem> queryCommentByUserId(String authorId);-->
+     <select id="queryCommentByUserId" resultMap="commentItemMap">
+         select * from tb_comment where authorId=#{authorId} order by commentDate desc;
      </select>
 </mapper>

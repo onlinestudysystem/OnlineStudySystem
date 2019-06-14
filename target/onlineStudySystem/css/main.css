@@ -1,0 +1,106 @@
+/*全局通用样式*/
+input,
+input:focus{
+	border: 1px #CCCCCC solid !important;
+	box-shadow: none !important;
+	outline: none !important;
+}
+
+
+.btn:focus,
+.btn.active:focus,
+.btn:active:focus,
+.btn.focus,
+.btn:active.focus,
+.btn.active.focus{
+	outline: none !important;
+	box-shadow: none !important;
+}
+
+/*导航栏*/
+#main_nav.navbar-brand{
+	padding-left: 40px;
+	color: #333 !important;
+	font-size: 22px;
+	font-weight: bolder;  /*粗细*/
+	position: relative;
+}
+
+#main_nav.navbar-brand:hover{
+	color: #333;
+}
+#main_nav.navbar-brand > i{
+	color: #337AB7;
+	font-size: 35px;
+	position: absolute;
+	left: 0;
+	top: 25px;
+}
+#qh_navbar > ul >.active > a{
+	background: none;
+	font-size: 20px;
+	font-weight: bolder;
+}
+#main_nav.input-group{
+	width: 190px;
+	
+}
+#main_nav.input-group > input,
+#main_nav.input-group > input:focus{
+	border: 1px #CCCCCC solid;
+	box-shadow: none;
+	outline: none;
+	border-right-color: #2E6DA4;
+}
+#main_nav.input-group > input{
+	border: 1px #CCC solid;
+	border-right-color: #2E6DA4;
+	
+}
+#main_nav.input-group>span>button{
+	height:34px;
+}
+
+#main_nav.btn:focus,
+#main_nav.btn.active:focus,
+#main_nav.btn:active:focus,
+#main_nav.btn.focus,
+#main_nav.btn:active.focus,
+#main_nav.btn.active.focus{
+	outline: none;
+	box-shadow: none;
+	background: #337AB7;
+	border-color: #2e6da4;
+}
+#main_nav.btn:hover{
+	background: #337AB7;
+	border-color: #2e6da4;
+}
+#loginreg >li > span{
+	color: #337AB7;
+}
+
+
+
+/*脚部样式*/
+.footer{
+	margin-top:50px ;
+	background: #666;
+	padding:30px 0 30px 0;
+	color: #999;
+}
+.footer > div.footericon{
+	text-align: center;
+}
+.footer>div.footericon>span{
+	font-size: 60px;
+}
+.footer>.cr{
+	text-align:center ;
+}
+.footer>.cr>a{
+	color: #999 ;
+}
+a:focus {
+	outline:none;
+}

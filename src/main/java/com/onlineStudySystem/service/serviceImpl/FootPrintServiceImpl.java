@@ -1,23 +1,31 @@
 package com.onlineStudySystem.service.serviceImpl;
 
 import com.onlineStudySystem.bean.FootPrintItem;
+import com.onlineStudySystem.bean.Papper;
 import com.onlineStudySystem.dao.FootPrintItemMapper;
 import com.onlineStudySystem.service.FootPrintService;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
+@Service
 public class FootPrintServiceImpl implements FootPrintService {
     @Resource
     FootPrintItemMapper footPrintItemMapper;
 
     //添加足迹
-    public void addFootPrint(FootPrintItem footPrintItem) {
+    public void addFootPrint(Papper papper,String userId) {
+        FootPrintItem footPrintItem=new FootPrintItem();
+        footPrintItem.setUserId(userId);
+        footPrintItem.setPapperId(papper.getPapperId());
+        footPrintItem.setPapperProfile(papper.getPapperProfile());
+        footPrintItem.setTitle(papper.getTitle());
         //检测该用户今天有没有逛过这篇文章
         footPrintItem.setReadDate(new Date());
-        if(!footPrintItemMapper.checkIsTodayFootprint(footPrintItem))
+        if(footPrintItemMapper.checkIsTodayFootprint(footPrintItem)<=0)
             footPrintItemMapper.addFootPrint(footPrintItem);
     }
 

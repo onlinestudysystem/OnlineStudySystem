@@ -13,13 +13,17 @@
         <result property="authorId" column="authorId"></result>
         <result property="submitDate" column="submitDate"></result>
         <result property="enshrineNumber" column="enshrineNumber"></result>
+        <association property="author" column="authorId" select="com.onlineStudySystem.dao.UserInfoMapper.queryUserInfoById"></association>
     </resultMap>
-
+    <!--    按类别查询，显示的字段-->
+    <sql id="querySqlByType">
+         papperId,papperProfile,title,submitDate,enshrineNumber,type
+    </sql>
 
 <!--    //根据文章id查询指定的文章-->
 <!--    public Papper queryPapperById(String papperId);-->
     <select id="queryPapperById" resultMap="papperMap">
-        select * from tb_papper where papperId = #{papperId}
+        select * from tb_papper where papperId = #{papperId};
     </select>
 
 <!--    //根据文章类型查询文章-->
@@ -37,7 +41,7 @@
 <!--    //上传文章-->
 <!--    public boolean submitPapper();-->
     <insert id="submitPapper">
-        insert into tb_papper values(#{papperId},#{authorId},#{title},#{papperText},#{type},#{submitDate},#{enshrineNumber},#{papperProfile});
+        insert into tb_papper values(#{papperId},#{authorId},#{title},#{papperText},#{type},#{submitDate},0,#{papperProfile});
     </insert>
 
 <!--    //修改指定的文章-->
@@ -60,6 +64,7 @@
         </where>
     </update>
 
+
 <!--    //删除文章-->
 <!--    public boolean deletePapper(String papperId);-->
 
@@ -71,8 +76,14 @@
 <!--    //寻找今日文章-->
 <!--    public List<Papper> queryTodayPapper();-->
     <select id="queryTodayPapper" resultMap="papperMap">
-     select * from (select * from tb_papper where TO_DAYS(submitDate)=TO_DAYS(NOW() ))
-     as a ORDER BY submitDate DESC ;
+         select * from (select * from tb_papper where TO_DAYS(submitDate)=TO_DAYS(NOW() ))
+         as a ORDER BY submitDate DESC ;
+    </select>
+
+<!--    //按类型寻找今日文章-->
+<!--    public List<Papper> queryTodayPapperByType(String type);-->
+    <select id="queryTodayPapperByType" resultMap="papperMap">
+        select <include refid="querySqlByType"></include>  from tb_papper where type=#{type} and TO_DAYS(submitDate)=TO_DAYS(NOW())
     </select>
 
 <!--    //按收藏量寻找推荐文章-->
@@ -86,5 +97,12 @@
      <select id="queryPapperInVagueByTitle" resultMap="papperMap">
          <bind name="_title" value="'%'+title+'%'" />
          select * from tb_papper where title like #{_title};
+     </select>
+
+<!--    //查询作者所有文章-->
+<!--    public List<Papper> queryAuthorPapper(String authorId);-->
+     <select id="queryAuthorPapper" resultMap="papperMap">
+         select <include refid="querySqlByType"></include>
+         from tb_papper where authorId=#{authorId}
      </select>
 </mapper>

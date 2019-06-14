@@ -14,8 +14,6 @@ public class UserInfoServiceImpl implements UserInfoService {
     @Resource
     UserInfoMapper userInfoMapper;
 
-
-
     public String registUserInfo(UserInfo userInfo) {
         //生成userId
         userInfo.setUserId(UUID.randomUUID().toString());
@@ -23,33 +21,36 @@ public class UserInfoServiceImpl implements UserInfoService {
         if(userInfo.getUsername().trim()!=""&&userInfo.getName().trim()!=""
                 &&userInfo.getPassword()!=""&&userInfo.getEmail().trim()!=""){
             //首先要校验用户是否已经被注册
-            return  userInfoMapper.checkUserExist(userInfo.getUsername())>0?"该用户已经被注册！":(userInfoMapper.registUserInfo(userInfo)>0?"注册成功":"注册失败，请检查网路链接是否正常!");
+            return  userInfoMapper.checkUserExist(userInfo.getUsername())>0?"该用户已经被注册！":
+                    (userInfoMapper.registUserInfo(userInfo)>0?"注册成功":"注册失败，请检查网路链接是否正常!");
         }
         return "注册失败,请完善信息！";
     }
 
     public UserInfo loginUser(String username, String password) {
-        return null;
+        return userInfoMapper.loginUser(username,password);
     }
 
     public List<UserInfo> queryUserInfoInVague(UserInfo userInfo) {
-        return null;
+        return userInfoMapper.queryUserInfoInVague(userInfo);
     }
 
     public List<UserInfo> queryAllUserInfo() {
-        return null;
+        return userInfoMapper.queryAllUserInfo();
     }
 
     public String reviseUserInfo(UserInfo userInfo) {
-        return null;
+        return userInfoMapper.reviseUserInfo(userInfo)>0?"修改成功！":"修改失败！请刷新重试";
     }
 
+    //计算总用户数
     public int countUserNum() {
-        return 0;
+        return userInfoMapper.countUserNum();
     }
 
+    //查询指定用户
     public UserInfo queryUserInfoById(int id) {
-        return null;
+        return userInfoMapper.queryUserInfoById(id);
     }
 
 

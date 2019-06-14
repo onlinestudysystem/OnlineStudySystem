@@ -60,6 +60,11 @@ public class TestPapperService {
         System.out.println(papperService.queryPapperById("000001"));
     }
 
+    @Test
+    public void queryPapperTodayType(){
+        System.out.println(papperService.queryTodayPapperByType("热点新闻"));
+    }
+
 
 
 

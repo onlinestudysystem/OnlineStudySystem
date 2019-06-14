@@ -4,4 +4,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.onlineStudySystem.dao.EnshrineMapper">
 
+    <resultMap id="enshrineMap" type="Enshrine">
+        <id property="papperId" column="papperId"></id>
+        <result property="title" column="title"></result>
+        <result property="userId" column="userId"></result>
+        <result property="papperProfile" column="papperProfile"></result>
+    </resultMap>
+
+<!--    //收藏文章-->
+<!--    public boolean enshrinePapper(Enshrine enshrine);-->
+    <insert id="enshrinePapper">
+        insert into tb_enshrine values(#{papperId},#{userId},#{title},#{papperProfile});
+    </insert>
+<!--    //删除收藏的文章-->
+<!--    public boolean deleteEnshrinePapper(@Param("papperId") String papperId,@Param("userId") String userId);-->
+    <delete id="deleteEnshrinePapper">
+        delete from tb_enshrine where papperId=#{papperId} and userId=#{userId};
+    </delete>
+<!--    //查找所有收藏的文章-->
+<!--    public List<Enshrine> queryAllEnshrinePapper();-->
+    <select id="queryAllEnshrinePapper" resultMap="enshrineMap">
+        select * from tb_enshrine where  userId=#{userId};
+    </select>
+
+<!--    //查找指定收藏的文章（依靠papperId）-->
+<!--    public int queryPapperById(String papperId,String userId);-->
+    <select id="queryPapperById" resultType="int">
+        select count(papperId) from tb_enshrine where papperId=#{papperId} and userId=#{userId};
+    </select>
 </mapper>
